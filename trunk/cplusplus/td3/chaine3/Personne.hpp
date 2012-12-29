@@ -4,7 +4,7 @@
 
 namespace enseirb{
   class Personne{ 
-  private :
+  protected :
     Chaine _nom;
     
   public:
@@ -13,6 +13,25 @@ namespace enseirb{
     Chaine nom();
     Chaine &nom2();
     ~Personne();
+  };
+
+  class Etudiant: public Personne{
+  private:
+    Chaine _filiere;
+    Chaine _enseignement; // ==> valeur
+    Chaine _eleveNom;
+  
+  public:
+    Etudiant(Chaine &, Chaine &);
+    Etudiant(const char *, Chaine &);
+    ~Etudiant();
+
+    virtual Chaine nom() const;
+    virtual const Chaine& nom2() const;
+
+    Chaine filiere() const;
+    void setEnseignement(Chaine&);
+    
   };
 
 }
